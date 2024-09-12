@@ -67,9 +67,9 @@ class PClusterJSONEncoder(DefaultJSONProvider):
         return DefaultJSONProvider.default(self, obj)
 
 
-def run():
+def run(is_default_domain: bool):
     app = utils.build_flask_app(__name__)
-    app.config["APPLICATION_ROOT"] = '/pcui'
+    app.config["APPLICATION_ROOT"] = '/pcui' if is_default_domain else '/'
     app.json = PClusterJSONEncoder(app)
     app.url_map.converters["regex"] = RegexConverter
     CSRF(app, CognitoFingerprintGenerator(CLIENT_ID, CLIENT_SECRET, USER_POOL_ID))

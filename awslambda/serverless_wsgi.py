@@ -13,6 +13,7 @@
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
 import base64
+import logging
 import os
 import sys
 from io import BytesIO
@@ -21,6 +22,9 @@ from werkzeug.datastructures import Headers, MultiDict, iter_multi_items
 from werkzeug.http import HTTP_STATUS_CODES
 from werkzeug.urls import url_encode, url_unquote, url_unquote_plus
 from werkzeug.wrappers import Response
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 # List of MIME types that should not be base64 encoded. MIME types within `text/*`
 # are included by default.
@@ -158,8 +162,9 @@ def handle_request(app, event, context):
         return {}
 
     if event.get("version") == "2.0":
+        logger.info("handling request v2")
         return handle_payload_v2(app, event, context)
-
+    logger.info("handling request v1")
     return handle_payload_v1(app, event, context)
 
 
@@ -223,7 +228,7 @@ def handle_payload_v1(app, event, context):
 
     response = Response.from_app(app, environ)
     returndict = generate_response(response, event)
-
+    logger.info(f"handling response {returndict}")
     return returndict
 
 

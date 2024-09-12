@@ -13,7 +13,7 @@ const nextConfig = {
   output: 'export',
   distDir: 'build',
   reactStrictMode: true,
-  basePath: '/pcui',
+  basePath: '',
   images: {
     unoptimized: true,
   },

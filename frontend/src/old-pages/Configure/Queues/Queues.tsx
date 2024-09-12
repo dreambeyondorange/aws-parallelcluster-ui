@@ -394,9 +394,9 @@ function Queue({index}: any) {
   const allocationStrategy: AllocationStrategy = useState(allocationStrategyPath)
 
   const capacityTypes: [string, string, string][] = [
-    ['ONDEMAND', 'On-Demand', '/pcui/img/od.svg'],
-    ['SPOT', 'Spot', '/pcui/img/spot.svg'],
-    ['CAPACITY_BLOCK', 'Capacity Block', '/pcui/img/cb.svg'],
+    ['ONDEMAND', 'On-Demand', '/img/od.svg'],
+    ['SPOT', 'Spot', '/img/spot.svg'],
+    ['CAPACITY_BLOCK', 'Capacity Block', '/img/cb.svg'],
   ]
   const capacityTypePath = [...queuesPath, index, 'CapacityType']
   const capacityType: string = useState(capacityTypePath) || 'ONDEMAND'

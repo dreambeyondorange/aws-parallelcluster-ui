@@ -48,7 +48,7 @@ function App({Component, pageProps}: AppProps) {
 
   const onAceLoad = useCallback(() => {
     window.editor = window.ace.edit('editor')
-    window.ace.config.set('basePath', '/pcui/third-party/ace-1.4.13/')
+    window.ace.config.set('basePath', '/third-party/ace-1.4.13/')
     window.ace.config.set('loadWorkerFromBlob', false)
     window.ace.config.set('showFoldWidgets', false)
     window.ace.config.set('showPrintMargin', false)
@@ -76,7 +76,7 @@ function App({Component, pageProps}: AppProps) {
       </QueryClientProvider>
       <div id="editor"></div>
       <Script
-        src="/pcui/third-party/ace-1.4.13/ace.min.js"
+        src="/third-party/ace-1.4.13/ace.min.js"
         onLoad={onAceLoad}
       />
     </>
